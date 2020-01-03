@@ -1,3 +1,7 @@
+/*
+    Main.java
+*/
+
 import java.awt.EventQueue;
 
 public class Main {
@@ -5,7 +9,7 @@ public class Main {
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new MyFrame();
+                new MyFrame();  
             }
         });
     }
