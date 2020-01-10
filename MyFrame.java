@@ -22,22 +22,30 @@ public class MyFrame extends JFrame implements ActionListener {    // + implemen
         JButton button_2 = new JButton("Button 2");
         JButton button_3 = new JButton("Button 3");
         
+        button_1.setActionCommand("ab1");
+        button_2.setActionCommand("ab2");
+        button_3.setActionCommand("ab3");
+
         add(button_1);
         
-        // button_1 jest źródłem zdarzeń. w momencie kliknięcia zostaje wysłane zdarzenie które musi ktoś odebrać.
-        // w tym celu musimy dodajemy słuchacza zdarzeń
-        // this oznacza że tym słuchaczem zdarzeń jest ramka
-        // zdarzenie zostaje przechwycone przez ramkę i zostaje wykonana metoda actionPerformed()
+        /*
+            button_1 jest źródłem zdarzeń. w momencie kliknięcia zostaje wysłane zdarzenie które musi ktoś odebrać.
+            w tym celu musimy dodajemy słuchacza zdarzeń. this oznacza że tym słuchaczem zdarzeń jest ramka.
+            zdarzenie zostaje przechwycone przez ramkę i zostaje wykonana metoda actionPerformed()
+        */
         button_1.addActionListener(this);
 
         add(button_2);
+        button_2.addActionListener(this);
+
         add(button_3);
-        
-        // add(new JButton("Button 1"));                       
-        // add(new JButton("Button 2"));
-        // add(new JButton("Button 3"));
+        button_3.addActionListener(this);
        
         setVisible(true);                                   // wyświetlenie ramki na ekranie metodą setVisible()
+    }
+
+    void pp(String ss) {
+        System.out.println(ss);
     }
 
     /*
@@ -48,6 +56,15 @@ public class MyFrame extends JFrame implements ActionListener {    // + implemen
             // ActionEvent jest to obiekt zdarzenia który jest wysyłany przez przycisk w momencie kliknięcia do słuchacza zdarzeń
             
             // następnie definicja tego co ma się stać w momencie kliknięcia przycisku
+            String ss = e.getActionCommand();
+            System.out.print(ss+" - ");
             System.out.println(new Date());      // tworzymy obiekt Date który wypisze w konsoli aktualną datę
+
+            if (ss == "ab2") {
+                pp("you pressed button 2");
+            }
+            if (ss.equals("ab3")) {
+                pp("trzeci leci.....");
+            }
         }
 }
